@@ -1,5 +1,6 @@
 var Fetch = require('whatwg-fetch');
 var rootUrl = 'https://api.imgur.com/3/';
+var fbUrl = 'https://craply.firebaseio.com/';
 var apiKey = '92f1493569279a3';
 var _ = require('lodash');
 var promise = require('bluebird');
@@ -66,5 +67,34 @@ module.exports = {
     } else {
       cb(null);
     }
+  },
+  postUser: function(userData, cb) {
+    return fetch(fbUrl + '/users.json', {
+      method: 'post',
+      headers: {
+        'Authorization': 'Client-ID ' + apiKey,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "access-control-allow-headers": "contentType, accept, data, Content-Type",
+        "access-control-max-age": 10 // Seconds.
+      },
+      body: JSON.stringify(userData)
+      })
+      .then(function(res){
+        console.log(res);
+      })
+    },
+  getUsers: function() {
+    return fetch(fbUrl + 'users.json', {
+      headers: {
+        'Authorization': 'Client-ID ' + apiKey
+      }
+    })
+      .then(function(response){
+        console.log(response)
+        return response.json();
+      });
   }
 };

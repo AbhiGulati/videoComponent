@@ -8,6 +8,7 @@ var Main = require('./components/main');
 var Topic = require('./components/topic');
 var ImageDetail = require('./components/image-detail');
 var Favorites = require('./components/favorites');
+var Register = require('./components/register');
 
 module.exports = (
     <Router history={new HashHistory}>
@@ -15,6 +16,7 @@ module.exports = (
           <Route path="topics/:id" component={Topic}/>
           <Route path="images/:id" component={ImageDetail}/>
           <Route path="favorites" component={Favorites}/>
+          <Route path="register" component={Register}/>
         </Route>
     </Router>
 );

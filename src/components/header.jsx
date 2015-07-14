@@ -56,6 +56,9 @@ module.exports = React.createClass({
               <li>
                 {this.state.loggedIn && <Link activeClassName="active" to="favorites">FAVORITES</Link>}
               </li>
+              <li className="pull-right">
+                {!this.state.loggedIn && <Link activeClassName="active" to="register">Signup</Link>}
+              </li>
             </ul>
           {this.state.loggedIn ? this.renderLogout() : this.renderLogin()}
         </div>

@@ -6,8 +6,7 @@ var ImagePreview = require('./image-preview');
 var _ = require('lodash');
 
 module.exports = React.createClass({
-  mixins: [Reflux.listenTo(FavoritesStore, 'onChange')
-  ],
+  mixins: [Reflux.listenTo(FavoritesStore, 'onChange')],
   getInitialState: function(){
     return {
       favImages: []

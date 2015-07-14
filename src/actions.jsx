@@ -10,5 +10,7 @@ module.exports = Reflux.createActions([
   'checkIfLoggedIn',
   'saveImage',
   'getFavorites',
-  'getFavImages'
+  'getFavImages',
+  'fbRegister',
+  'fbLogin'
 ]);

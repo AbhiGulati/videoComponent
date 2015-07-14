@@ -25,9 +25,12 @@ module.exports = React.createClass({
   componentWillMount: function(){
     Actions.getImage(this.props.params.id);
     Actions.checkIfLoggedIn();
-    console.log(this.state.loggedIn)
     Actions.getFavorites();
-    console.log(this.state.favorites);
+  },
+  setStateOnAuth(){
+    this.setState({
+      loggedIn: Actions.checkIfLoggedIn()
+    });
   },
   render: function() {
     return <div>
@@ -38,9 +41,9 @@ module.exports = React.createClass({
     return <div className="image-detail">
       <div className="panel panel-primary">
         <div className="panel-heading">
-          {!this.state.loggedIn && <h6>Login to save to your favorites</h6>}
-          {this.state.loggedIn && this.renderFavorited()}
-          {this.state.loggedIn && this.renderFavoriteBtn()}
+          {this.state.loggedIn ? null : <h6>Login to save to your favorites</h6> }
+          {this.state.loggedIn ? this.renderFavorited() : null}
+          {this.state.loggedIn ? this.renderFavoriteBtn() : null}
         </div>
           <div className="panel-body">
             <h4 className="text-center title">{this.state.image.title}</h4>
