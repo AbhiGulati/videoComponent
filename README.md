@@ -1,28 +1,9 @@
-ReactStarter
-====
+MVP with React.js, Reflux, and React-Router
 
-Use this as a starting point for working on chapters of the [Learn and Understand React JS](https://www.udemy.com/learn-and-understand-reactjs/) course on Udemy.com.
+This app makes use of the Imgur API. These are the minimum requirements:
 
----
-
-###Getting Started###
-
-There are two methods for getting started with this repo.
-
-####Familiar with Git?#####
-Checkout this repo, install depdencies, then start the gulp process with the following:
-
-```
-	> git clone git@github.com:StephenGrider/ReactStarter.git
-	> cd ReactStarter
-	> npm install
-	> gulp
-```
-
-####Not Familiar with Git?#####
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-	> npm install
-	> gulp
-```
+* basic login/logout
+* display Imgur categories in menu
+* user can see a table of clickable photos/videos in one category
+* can see a more detailed view of one photo with title and comments
+* can save a photo link to user favourites (local storage)
