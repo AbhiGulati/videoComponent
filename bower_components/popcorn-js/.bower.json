@@ -1,0 +1,39 @@
+{
+  "name": "popcorn-js",
+  "version": "1.5.11",
+  "main": "popcorn.js",
+  "keywords": [
+    "html5",
+    "media",
+    "video",
+    "audio",
+    "popcornjs",
+    "popcorn",
+    "popcorn.js"
+  ],
+  "ignore": [
+    "AUTHORS",
+    "CHANGELOG.md",
+    "LICENSE_HEADER",
+    "Makefile",
+    "build",
+    "demos",
+    "effects",
+    "example.html",
+    "test",
+    "tests.conf",
+    "tools",
+    "unsupported"
+  ],
+  "homepage": "https://github.com/mozilla/popcorn-js",
+  "_release": "1.5.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.11",
+    "commit": "921fe385d873cd69b5a63da824d0b3791624506b"
+  },
+  "_source": "git://github.com/mozilla/popcorn-js.git",
+  "_target": "~1.5.11",
+  "_originalSource": "popcorn-js",
+  "_direct": true
+}
