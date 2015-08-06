@@ -1,22 +1,15 @@
 var React = require('react');
+var CommentSubmission = require('./comment-submission.jsx');
+var CommentList = require('./comment-list.jsx');
+var VideoPlayer = require('./video-player.jsx');
 //var Player = require('react-youtube');
 
 module.exports = React.createClass({
   getInitialState: function(){
-    return {title: "our video",
-            url: "https://www.youtube.com/watch?v=xjS6SftYQaQ"};
-  },
-  componentWillMount: function(){
-  },
-  componentDidMount: function(){
-    return this.videoSetup();
-  },
-  videoSetup: function(){
-    // initialize video.js
-    var player = videojs('attachmentVideo');
-    // setup plugin
-    player.markers({
-      markers: [
+    return {
+      title: "our video",
+      url: "https://www.youtube.com/watch?v=xjS6SftYQaQ",
+      comments: [
         {
           time: 9.5,
           text: "I don't get what you are saying"
@@ -32,48 +25,44 @@ module.exports = React.createClass({
         {
           time: 28,
           text: "What are you talking about"
-        }
-      ],
-      markerStyle: {
-        'width':'7px',
-        'border-radius': '30%',
-        'background-color': 'red'
-      },
-      markerTip:{
-        display: true,
-        text: function(marker) {
-          return "Break: "+ marker.text;
         },
-        time: function(marker) {
-          return marker.time;
+        {
+          time: 60,
+          text: "Did this work?"
         }
-      },
-      breakOverlay:{
-        display: false,
-        displayTime: 3,
-        style:{
-          'width':'100%',
-          'height': '20%',
-          'background-color': 'rgba(0,0,0,0.7)',
-          'color': 'white',
-          'font-size': '17px'
-        },
-        text: function(marker) {
-          return "Break overlay: " + marker.overlayText;
-        }
-      },
-      onMarkerClick: function(marker) {},
-      onMarkerReached: function(marker) {}
-    });
-    return player;
- },
+      ]
+    };
+  },
+  
+  onCommentSubmit: function(comment) {
+    var player = videojs('attachmentVideo');
+    // player.markers.add([{time:player.currentTime(), text:comment}])
+    var commentObj = {
+      text: comment,
+      time: player.currentTime()
+    };
+
+    this.setState({
+      comments: this.state.comments.concat(commentObj)
+    })
+
+    // //console.log(player);
+    // player.markers.add([
+    //   commentObj
+    // ])
+  },
   render: function(){
+    console.log(this.state.comments);
     return (
         <div id="attachmentViewer">
           <h2>{this.state.title}</h2>
-          <video id='attachmentVideo' className='video-js vjs-default-skin' width='640'
-                 height='264' controls preload='auto'
-         data-setup={'{ "techOrder": ["youtube"], "src": "' + this.state.url + '" }'}></video>
+          <VideoPlayer 
+            title={this.state.title} 
+            url={this.state.url}
+            comments = {this.state.comments} />
+
+          <CommentSubmission onCommentSubmit={this.onCommentSubmit}/>
+          <CommentList comments={this.state.comments} />
         </div>
     );
   },
